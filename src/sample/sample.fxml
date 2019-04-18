@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<GridPane gridLinesVisible="true" hgap="10" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="315.0" prefWidth="443.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+
+   <children>
+      <HBox prefHeight="45.0" prefWidth="359.0" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP">
+         <children>
+            <Button mnemonicParsing="false" text="Plan" />
+            <Button mnemonicParsing="false" text="Zadania" />
+            <Button mnemonicParsing="false" text="Pracownicy" />
+         </children>
+      </HBox>
+      <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+        <content>
+          <AnchorPane minHeight="-Infinity" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT">
+               <children>
+                  <HBox id="days" fx:id="days" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="219.0" prefWidth="100.0">
+                           <children>
+                              <Label alignment="TOP_CENTER" prefHeight="17.0" prefWidth="100.0" text="Day 1" textAlignment="CENTER" />
+                              <Separator prefWidth="200.0" />
+                              <Label text="Tasks:" />
+                              <ListView editable="true" prefHeight="196.0" prefWidth="100.0" />
+                              <Separator prefWidth="200.0" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="219.0" prefWidth="100.0">
+                           <children>
+                              <Label alignment="TOP_CENTER" prefHeight="17.0" prefWidth="100.0" text="Day 1" textAlignment="CENTER" />
+                              <VBox prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Button mnemonicParsing="false" prefHeight="25.0" text="Button" />
+                                    <Button mnemonicParsing="false" prefHeight="25.0" text="Button" />
+                                    <Button mnemonicParsing="false" prefHeight="25.0" text="Button" />
+                                    <Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="25.0" text="Button" />
+                                    <Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="25.0" text="Button" />
+                                    <Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="25.0" text="Button" />
+                                    <Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="25.0" text="Button" />
+                                    <Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="25.0" text="Button" />
+                                    <Button layoutX="10.0" layoutY="60.0" mnemonicParsing="false" prefHeight="25.0" text="Button" />
+                                    <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" text="Button" />
+                                    <Button layoutX="10.0" layoutY="60.0" mnemonicParsing="false" prefHeight="25.0" text="Button" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </children>
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints vgrow="ALWAYS" />
+   </rowConstraints>
+</GridPane>
