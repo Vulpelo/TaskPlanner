@@ -12,14 +12,14 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane gridLinesVisible="true" hgap="10" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="315.0" prefWidth="443.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<GridPane gridLinesVisible="true" hgap="10" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="315.0" prefWidth="443.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.MainController">
 
    <children>
       <HBox prefHeight="45.0" prefWidth="359.0" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP">
          <children>
-            <Button mnemonicParsing="false" text="Plan" />
-            <Button mnemonicParsing="false" text="Zadania" />
-            <Button mnemonicParsing="false" text="Pracownicy" />
+            <Button mnemonicParsing="false" text="Reload plan" />
+            <Button id="tasksButton" mnemonicParsing="false" onAction="#tasksManagerButton" text="Tasks" />
+            <Button id="workersButton" mnemonicParsing="false" onAction="#workersManagerButton" text="Workers" />
          </children>
       </HBox>
       <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
@@ -46,11 +46,6 @@
                                     <Button mnemonicParsing="false" prefHeight="25.0" text="Button" />
                                     <Button mnemonicParsing="false" prefHeight="25.0" text="Button" />
                                     <Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="25.0" text="Button" />
-                                    <Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="25.0" text="Button" />
-                                    <Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="25.0" text="Button" />
-                                    <Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="25.0" text="Button" />
-                                    <Button layoutX="10.0" layoutY="35.0" mnemonicParsing="false" prefHeight="25.0" text="Button" />
-                                    <Button layoutX="10.0" layoutY="60.0" mnemonicParsing="false" prefHeight="25.0" text="Button" />
                                     <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" text="Button" />
                                     <Button layoutX="10.0" layoutY="60.0" mnemonicParsing="false" prefHeight="25.0" text="Button" />
                                  </children>
