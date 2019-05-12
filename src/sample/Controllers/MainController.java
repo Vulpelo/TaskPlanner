@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import sample.Model.TaskList;
 import sample.Plan.*;
 
 import java.time.DayOfWeek;
@@ -15,6 +16,9 @@ import java.util.List;
 import java.util.Map;
 
 public class MainController {
+
+    private TaskList taskList_ToWindow = new TaskList();
+
     public void workersManagerButton() {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("../resources/workersManager.fxml"));
@@ -99,6 +103,9 @@ public class MainController {
         plan.createPlan(taskList, workerList);
 
         Map<Long, WorkTime> workersWorkingTime = plan.getWorkersWorkingTime();
+
+
+        taskList_ToWindow.createNewTaskList("Task 1", plan.toString());
     }
 
 

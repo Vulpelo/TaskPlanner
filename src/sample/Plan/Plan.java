@@ -6,6 +6,7 @@ import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Plan {
     private LocalDateTime planStart;
@@ -89,4 +90,18 @@ public class Plan {
         return thisPeriodWorkerAmount;
     }
 
+    @Override
+    public String toString() {
+        String out = "";
+
+        Set<Long> keySet  = workersWorkingTime.keySet();
+
+        for (Long key: keySet) {
+            out += "Worker " + key + "\n";
+
+            out += workersWorkingTime.get(key).toString();
+        }
+
+        return out;
+    }
 }

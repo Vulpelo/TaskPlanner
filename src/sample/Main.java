@@ -13,27 +13,27 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import sample.Model.TaskList;
 
 public class Main extends Application {
 
     Stage primaryStage;
 
-    ListView<String> listView = new ListView<>();
-    ObservableList<String> data = FXCollections.observableArrayList(
-            "Adam", "Beka", "Lista"
-    );
-
     private void afterStart(Scene scene) {
-        HBox box = (HBox) scene.lookup("#days");
+//        HBox box = (HBox) scene.lookup("#days");
+//
+//        VBox vBox = new VBox();
+//
+//        box.getChildren().add(vBox);
+//
+//        Label label = new Label();
+//        label.setText("Task X");
+//
+//        TextArea textArea = new TextArea();
+//
+//        vBox.getChildren().addAll(label, textArea);
 
-        VBox vBox = new VBox();
-
-        box.getChildren().add(vBox);
-
-        Label label = new Label();
-        label.setText("Day1321");
-
-        vBox.getChildren().addAll(label, listView);
+        TaskList.setScene(scene);
     }
 
     @Override

@@ -44,4 +44,14 @@ public class WorkTime {
     public List<LocalDateTime[]> getDateTimes() {
         return dateTimes;
     }
+
+    @Override
+    public String toString() {
+        String out = "";
+
+        for (LocalDateTime[] times: dateTimes) {
+            out += times[0].toString() + " - " + times[1].toString() + "\n";
+        }
+        return out;
+    }
 }
