@@ -56,7 +56,7 @@ public class Plan {
 
         while (currentWorkTime < task.getRequredHourTime()) {
 
-            currentWorkTime += getWorkersInPeriod(currentCheckTime, currentEndCheckTime, task.getRequredHourTime() - currentWorkTime);
+            currentWorkTime += getWorkersInPeriod(task.getTask_id(), currentCheckTime, currentEndCheckTime, task.getRequredHourTime() - currentWorkTime);
 
             currentCheckTime = currentCheckTime.plusHours(hTimeStamp);
             currentEndCheckTime = currentEndCheckTime.plusHours(hTimeStamp);
@@ -65,22 +65,15 @@ public class Plan {
 
     }
 
-    private Integer getWorkersInPeriod(LocalDateTime currentCheckTime, LocalDateTime currentEndCheckTime, Integer leftHours) {
+    private Integer getWorkersInPeriod(Long taskId, LocalDateTime currentCheckTime, LocalDateTime currentEndCheckTime, Integer leftHours) {
         Integer thisPeriodWorkerAmount = 0;
 
         for (Worker worker: workers) {
 
-            if (worker.isAvaliable(currentCheckTime, currentEndCheckTime)) {
+            if (worker.isAvaliable(currentCheckTime, currentEndCheckTime) &&
+                    !workersWorkingTimeForTasks.isWorkerBusy(worker.getWorker_id(), currentCheckTime, currentEndCheckTime)) {
 
-                if ( workersWorkingTime.containsKey(worker.getWorker_id()) ) {
-                    workersWorkingTime.get(worker.getWorker_id()).addDateTime(currentCheckTime, currentEndCheckTime);
-                }
-                else {
-                    WorkTime workTime = new WorkTime();
-                    workTime.addDateTime(currentCheckTime, currentEndCheckTime);
-
-                    workersWorkingTime.put(worker.getWorker_id(), workTime);
-                }
+                workersWorkingTimeForTasks.addWorkingTime(taskId, worker.getWorker_id(), currentCheckTime, currentEndCheckTime);
 
                 thisPeriodWorkerAmount++;
                 if (thisPeriodWorkerAmount >= maxWorkersAtTheTime || thisPeriodWorkerAmount >=  leftHours) {
@@ -95,7 +88,8 @@ public class Plan {
 
     @Override
     public String toString() {
-        String out = "";
+        return workersWorkingTimeForTasks.toString();
+        /*String out = "";
 
         Set<Long> keySet  = workersWorkingTime.keySet();
 
@@ -105,6 +99,6 @@ public class Plan {
             out += workersWorkingTime.get(key).toString();
         }
 
-        return out;
+        return out;*/
     }
 }

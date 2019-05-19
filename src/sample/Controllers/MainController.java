@@ -81,10 +81,12 @@ public class MainController {
         Task task = new Task(LocalDateTime.of(2019, 1,3,15,0), 19);
         taskList.add(task);
 
+        task = new Task(LocalDateTime.of(2019, 1,3,5,0), 15);
+        taskList.add(task);
 
         List<Worker> workerList = new ArrayList<>();
 
-        for (int i=0; i<4; i++) {
+        for (int i=0; i<3; i++) {
             Worker worker = new Worker();
 
             worker.setName("Worker" + (i + 1));
