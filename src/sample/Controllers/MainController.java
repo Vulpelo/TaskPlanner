@@ -74,6 +74,8 @@ public class MainController {
     }
 
     public void reloadPlanButton() {
+        taskList_ToWindow.clear();
+
         Plan plan = new Plan(LocalDateTime.of(2019, 1, 1, 8, 0));
 
 
@@ -104,12 +106,9 @@ public class MainController {
 
         plan.createPlan(taskList, workerList);
 
-        Map<Long, WorkTime> workersWorkingTime = plan.getWorkersWorkingTime();
-
-
-        taskList_ToWindow.createNewTaskList("Task 1", plan.toString());
+        for (Map.Entry<Long, String> mapEntry: plan.toMapString().entrySet()) {
+            taskList_ToWindow.createNewTaskList("Task " + mapEntry.getKey(), mapEntry.getValue().toString());
+        }
     }
-
-
 
 }

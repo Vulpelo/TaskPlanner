@@ -16,8 +16,6 @@ public class Plan {
     private Integer hTimeStamp = 1;
 
     // found workers and their's hours
-    private Map<Long, WorkTime> workersWorkingTime = new HashMap<>();
-
     private WorkersWorkingTimeForTasks workersWorkingTimeForTasks = new WorkersWorkingTimeForTasks();
 
     private List<Worker> workers;
@@ -32,9 +30,6 @@ public class Plan {
     }
 
 
-    public Map<Long, WorkTime> getWorkersWorkingTime() {
-        return workersWorkingTime;
-    }
 
     public void createPlan(List<Task> tasks, List<Worker> workers) {
         this.workers = workers;
@@ -86,19 +81,12 @@ public class Plan {
         return thisPeriodWorkerAmount;
     }
 
+    public Map<Long, String> toMapString() {
+        return workersWorkingTimeForTasks.toMapString();
+    }
+
     @Override
     public String toString() {
         return workersWorkingTimeForTasks.toString();
-        /*String out = "";
-
-        Set<Long> keySet  = workersWorkingTime.keySet();
-
-        for (Long key: keySet) {
-            out += "Worker " + key + "\n";
-
-            out += workersWorkingTime.get(key).toString();
-        }
-
-        return out;*/
     }
 }

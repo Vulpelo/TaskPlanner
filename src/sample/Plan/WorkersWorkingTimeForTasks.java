@@ -42,6 +42,23 @@ public class WorkersWorkingTimeForTasks {
         }
     }
 
+    public Map<Long, String> toMapString() {
+        Map<Long, String> map = new HashMap<>();
+        String out;
+
+        for (Map.Entry<Long, Map<Long, WorkTime>> taskEntry: allWorkersWorkingTime.entrySet()) {
+            out = "";
+
+            for (Map.Entry<Long, WorkTime> workEntry: taskEntry.getValue().entrySet()) {
+                out += "Worker " + workEntry.getKey() + "\n"
+                        + workEntry.getValue().toString();
+            }
+            map.put(taskEntry.getKey(), out);
+        }
+
+        return map;
+    }
+
     @Override
     public String toString() {
         String out = "";

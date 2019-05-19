@@ -22,10 +22,15 @@ public class TaskList {
         scene = nScene;
     }
 
+    public void clear() {
+        ((HBox) scene.lookup("#days")).getChildren().clear();
+    }
+
     public void createNewTaskList(String taskName, String description) {
         HBox box = (HBox) scene.lookup("#days");
 
         VBox vBox = new VBox();
+        vBox.setMaxWidth(220);
 
         box.getChildren().add(vBox);
 
