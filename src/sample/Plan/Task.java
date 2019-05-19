@@ -3,6 +3,8 @@ package sample.Plan;
 import java.time.LocalDateTime;
 
 public class Task {
+    private static Long id = 0L;
+    private Long task_id;
 
     private LocalDateTime deadLine;
 
@@ -11,6 +13,13 @@ public class Task {
     public Task(LocalDateTime deadLine, Integer requredHourTime) {
         this.deadLine = deadLine;
         this.requredHourTime = requredHourTime;
+
+        task_id = id;
+        id++;
+    }
+
+    public Long getTask_id() {
+        return task_id;
     }
 
     public void setDeadLine(LocalDateTime deadLine) {

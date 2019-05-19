@@ -54,4 +54,14 @@ public class WorkTime {
         }
         return out;
     }
+
+    boolean isWorkingBetween(LocalDateTime from, LocalDateTime to) {
+        for (LocalDateTime[] time: dateTimes) {
+            if ( from.compareTo(time[0]) >= 0 && to.compareTo(time[1]) <= 0) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

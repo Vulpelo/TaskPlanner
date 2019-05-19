@@ -18,6 +18,8 @@ public class Plan {
     // found workers and their's hours
     private Map<Long, WorkTime> workersWorkingTime = new HashMap<>();
 
+    private WorkersWorkingTimeForTasks workersWorkingTimeForTasks = new WorkersWorkingTimeForTasks();
+
     private List<Worker> workers;
 
 
@@ -41,6 +43,7 @@ public class Plan {
         System.out.println("Creating PLAN...");
 
         for (Task task: tasks) {
+            workersWorkingTimeForTasks.createTask(task.getTask_id());
             planForTask(task);
         }
     }

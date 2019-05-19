@@ -20,19 +20,6 @@ public class Main extends Application {
     Stage primaryStage;
 
     private void afterStart(Scene scene) {
-//        HBox box = (HBox) scene.lookup("#days");
-//
-//        VBox vBox = new VBox();
-//
-//        box.getChildren().add(vBox);
-//
-//        Label label = new Label();
-//        label.setText("Task X");
-//
-//        TextArea textArea = new TextArea();
-//
-//        vBox.getChildren().addAll(label, textArea);
-
         TaskList.setScene(scene);
     }
 
