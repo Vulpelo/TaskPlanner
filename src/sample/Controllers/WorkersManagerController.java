@@ -72,4 +72,18 @@ public class WorkersManagerController {
         }
         workersListView.setItems(items);
     }
+
+    public void workersListViewClicked() {
+        String item = workersListView.getSelectionModel().getSelectedItem();
+
+        String[] itemSplit = item.split(" ");
+
+        for (Worker worker: PlanData.getWorkers()) {
+            if (worker.getWorker_id().equals(Long.valueOf(itemSplit[0]))) {
+                String text = worker.getAvaliability().toString();
+                workerTextArea.setText(text);
+                break;
+            }
+        }
+    }
 }

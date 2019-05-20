@@ -52,4 +52,17 @@ public class Avaliability {
 
         return false;
     }
+
+    @Override
+    public String toString() {
+        String out = "";
+
+        for (int i=0; i<avaliabilityTimes.size(); i++) {
+            for (LocalTime[] time: avaliabilityTimes.get(i)) {
+                out += (i+1) + " - " + time[0].toString() + " - " + time[1].toString() + "\n";
+            }
+        }
+
+        return out;
+    }
 }
