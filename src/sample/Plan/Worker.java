@@ -29,7 +29,6 @@ public class Worker {
         return avaliability.isAvaliable(from, to);
     }
 
-
     public void setName(String name) {
         this.name = name;
     }
@@ -52,5 +51,10 @@ public class Worker {
 
     public Avaliability getAvaliability() {
         return avaliability;
+    }
+
+    @Override
+    public String toString() {
+        return getWorker_id().toString();
     }
 }

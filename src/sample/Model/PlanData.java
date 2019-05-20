@@ -38,4 +38,17 @@ public class PlanData {
             }
         }
     }
+
+    public static void addWorker(Worker worker) {
+        PlanData.workers.add(worker);
+    }
+
+    public static void removeWorker(Long id) {
+        for (int i=0; i<workers.size(); i++) {
+            if (workers.get(i).getWorker_id().equals(id) ) {
+                workers.remove(i);
+                break;
+            }
+        }
+    }
 }

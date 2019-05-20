@@ -23,12 +23,12 @@
             <children>
                 <HBox prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <Button mnemonicParsing="false" text="Delete selected" />
+                        <Button onAction="#deleteButton" mnemonicParsing="false" text="Delete selected" />
                     </children>
                 </HBox>
-            <ListView prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+            <ListView fx:id="workersListView" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
                   <Button mnemonicParsing="false" onAction="#addNewButton" text="Add new worker" GridPane.columnIndex="1" />
-            <TextArea prefHeight="200.0" prefWidth="200.0" promptText="Here write struct to add new worker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextArea fx:id="workerTextArea" prefHeight="200.0" prefWidth="200.0" promptText="1 - 10:00:00 - 15:00:00 " GridPane.columnIndex="1" GridPane.rowIndex="1" />
             </children>
         </GridPane>
     </children>

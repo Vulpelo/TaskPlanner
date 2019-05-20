@@ -1,40 +1,75 @@
 package sample.Controllers;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import sample.Model.PlanData;
 import sample.Plan.Avaliability;
 import sample.Plan.Worker;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
 
 public class WorkersManagerController {
+
+    @FXML
+    private ListView<String> workersListView;
+
+    @FXML
+    private TextArea workerTextArea;
+
+    public void initialize() {
+        updateListView();
+    }
+
     public void addNewButton() {
-        System.out.println("ADDED workers");
-        List<Worker> workerList = new ArrayList<>();
+        String text = workerTextArea.getText();
 
-        for (int i=0; i<3; i++) {
-            Worker worker = new Worker();
+        String[] timesDays = text.split("\n");
 
-            worker.setName("Worker" + (i + 1));
+        Worker worker = new Worker();
+        worker.setName("Worker" + worker.getWorker_id());
 
-            Avaliability avaliability = new Avaliability();
-            avaliability.addAvaliabilityTime(DayOfWeek.MONDAY, LocalTime.of(8, 0), LocalTime.of(15, 0));
-            avaliability.addAvaliabilityTime(DayOfWeek.TUESDAY, LocalTime.of(8, 0), LocalTime.of(15, 0));
-            avaliability.addAvaliabilityTime(DayOfWeek.WEDNESDAY, LocalTime.of(8, 0), LocalTime.of(15, 0));
-            avaliability.addAvaliabilityTime(DayOfWeek.FRIDAY, LocalTime.of(8, 0), LocalTime.of(15, 0));
+        Avaliability avaliability = new Avaliability();
 
-            worker.setAvaliability(avaliability);
+        for (String timeDay: timesDays) {
+            String[] time = timeDay.split(" - ");
 
-            workerList.add(worker);
+            int dayNumber = Integer.valueOf(time[0]);
+            if (dayNumber < 1)
+                dayNumber = 1;
+            else if (dayNumber > 7)
+                dayNumber = 7;
+
+            DayOfWeek day = DayOfWeek.of( dayNumber );
+            LocalTime start = LocalTime.parse(time[1]);
+            LocalTime end = LocalTime.parse(time[2]);
+            avaliability.addAvaliabilityTime(day, start, end);
         }
-        PlanData.setWorkers(workerList);
+        worker.setAvaliability(avaliability);
 
+        PlanData.addWorker(worker);
+
+        updateListView();
+    }
+
+    public void deleteButton() {
+        String item = workersListView.getSelectionModel().getSelectedItem();
+
+        String[] itemSplit = item.split(" ");
+
+        PlanData.removeWorker( Long.valueOf( itemSplit[0] ) );
+
+        updateListView();
+    }
+
+    private void updateListView() {
+        ObservableList<String> items = FXCollections.observableArrayList ();
+        for (Worker worker: PlanData.getWorkers()) {
+            items.add( worker.toString() );
+        }
+        workersListView.setItems(items);
     }
 }
