@@ -40,7 +40,7 @@ public class Task {
 
     @Override
     public String toString() {
-        String out = task_id.toString() + " -> " + deadLine.toString();
+        String out = task_id.toString() + " -> " + deadLine.toString() + " WH:" + requredHourTime;
         return out;
     }
 }
