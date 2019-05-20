@@ -37,4 +37,10 @@ public class Task {
     public Integer getRequredHourTime() {
         return requredHourTime;
     }
+
+    @Override
+    public String toString() {
+        String out = task_id.toString() + " -> " + deadLine.toString();
+        return out;
+    }
 }

@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import sample.Model.PlanData;
 import sample.Model.TaskList;
 import sample.Plan.*;
 
@@ -79,32 +80,9 @@ public class MainController {
         Plan plan = new Plan(LocalDateTime.of(2019, 1, 1, 8, 0));
 
 
-        List<Task> taskList = new ArrayList<>();
-        Task task = new Task(LocalDateTime.of(2019, 1,3,15,0), 19);
-        taskList.add(task);
 
-        task = new Task(LocalDateTime.of(2019, 1,3,5,0), 15);
-        taskList.add(task);
 
-        List<Worker> workerList = new ArrayList<>();
-
-        for (int i=0; i<3; i++) {
-            Worker worker = new Worker();
-
-            worker.setName("Worker" + (i + 1));
-
-            Avaliability avaliability = new Avaliability();
-            avaliability.addAvaliabilityTime(DayOfWeek.MONDAY, LocalTime.of(8, 0), LocalTime.of(15, 0));
-            avaliability.addAvaliabilityTime(DayOfWeek.TUESDAY, LocalTime.of(8, 0), LocalTime.of(15, 0));
-            avaliability.addAvaliabilityTime(DayOfWeek.WEDNESDAY, LocalTime.of(8, 0), LocalTime.of(15, 0));
-            avaliability.addAvaliabilityTime(DayOfWeek.FRIDAY, LocalTime.of(8, 0), LocalTime.of(15, 0));
-
-            worker.setAvaliability(avaliability);
-
-            workerList.add(worker);
-        }
-
-        plan.createPlan(taskList, workerList);
+        plan.createPlan(PlanData.getTaskList(), PlanData.getWorkers());
 
         for (Map.Entry<Long, String> mapEntry: plan.toMapString().entrySet()) {
             taskList_ToWindow.createNewTaskList("Task " + mapEntry.getKey(), mapEntry.getValue().toString());
