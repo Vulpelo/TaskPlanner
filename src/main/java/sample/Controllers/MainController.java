@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import sample.Drools.TaskPlanConf;
 import sample.Model.PlanData;
 import sample.Model.TaskList;
 import sample.Plan.*;
@@ -78,8 +79,8 @@ public class MainController {
         // TODO: zaleznosci miedzy taskami
         // kompetencje pracownika
         //
-
-
+        TaskPlanConf taskPlanConf = new TaskPlanConf();
+        taskPlanConf.solve();
 
         plan.createPlan(PlanData.getTaskList(), PlanData.getWorkers());
 

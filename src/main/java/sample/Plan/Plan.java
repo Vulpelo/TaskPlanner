@@ -30,7 +30,6 @@ public class Plan {
     }
 
 
-
     public void createPlan(List<Task> tasks, List<Worker> workers) {
         this.workers = workers;
 
